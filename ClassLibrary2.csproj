@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AssemblyName>AdminMenuButton</AssemblyName>
+        <RootNamespace>AdminMenuButton</RootNamespace>
+        <Version>1.0.0</Version>
+        <Nullable>disable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <!-- Stops the project from copying all referenced DLLs into the output -->
+        <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <GameDir>/home/henw/.local/share/Steam/steamapps/common/REPO</GameDir>
+        <BepInExDir>$(GameDir)/BepInEx</BepInExDir>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- BepInEx core -->
+        <Reference Include="BepInEx">
+            <HintPath>$(BepInExDir)/core/BepInEx.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="BepInEx.Harmony">
+            <HintPath>$(BepInExDir)/core/BepInEx.Harmony.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="0Harmony">
+            <HintPath>$(BepInExDir)/core/0Harmony.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+
+        <!-- Unity -->
+        <Reference Include="UnityEngine">
+            <HintPath>$(GameDir)/REPO_Data/Managed/UnityEngine.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>$(GameDir)/REPO_Data/Managed/UnityEngine.CoreModule.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+
+        <!-- Game assembly -->
+        <Reference Include="Assembly-CSharp">
+            <HintPath>$(GameDir)/REPO_Data/Managed/Assembly-CSharp.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+
+        <!-- MenuLib (installed via BepInEx plugins) -->
+        <Reference Include="MenuLib">
+            <HintPath>$(BepInExDir)/plugins/MenuLib.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+
+        <!-- RepoAdminMenu (soft dependency - only needed to compile) -->
+        <Reference Include="RepoAdminMenu">
+            <HintPath>$(BepInExDir)/plugins/RepoAdminMenu.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+
+</Project>
